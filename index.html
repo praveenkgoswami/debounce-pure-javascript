@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>How to set up React, Webpack, and Babel</title>
+</head>
+<body>
+    <button id="root">Click Here</button>
+    <input id="input" type="text" />
+    <script>
+        /* function debounce(fn, delay) {
+            let timeout;
+            console.log("===func$$$", fn, delay)
+            return function(){
+                const funcCall = fn.apply(this, arguments);
+                console.log("===func$$$")
+                clearTimeout(timeout);
+                timeout = setTimeout(funcCall, delay);
+            }
+        }
+        function apiCallFunc() {
+            console.log("===========");
+        }
+        function callOnClick() {
+            debounce(apiCallFunc, 1000);
+        }
+ */
+ 
+const debounce = (func, delay) => {
+  let inDebounce
+  return function() {
+    const context = this
+    const args = arguments
+    console.log("@@@@@@@@===========", this, arguments, inDebounce);
+    clearTimeout(inDebounce)
+    inDebounce = setTimeout(func, delay)
+  }
+}
+const debounceBtn = document.getElementById("input");
+        debounceBtn.addEventListener('change', debounce(function() {
+  console.info('Hey! It is', new Date().toUTCString());
+}, 3000));
+    </script>
+</body>
+</html>
